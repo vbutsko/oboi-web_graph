@@ -37,7 +37,7 @@ public class GraphGenerator
                 currentM = 0;
                 indexNewVertex++;
             }
-            newVertexIndexSet.addAll(vertex.getValue());
+            newVertexIndexSet.addAll(collapseVertexSet(vertex.getValue(), m));
             currentM++;
         }
         currentN = graph.size() / m;
@@ -70,5 +70,15 @@ public class GraphGenerator
             index++;
         }
         return index;
+    }
+
+    private Set<Integer> collapseVertexSet(final Set<Integer> vertexSet, int m)
+    {
+        final Set<Integer> collapsedVertexSet = new TreeSet<>();
+        for (Integer index : vertexSet)
+        {
+            collapsedVertexSet.add(index / m);
+        }
+        return collapsedVertexSet;
     }
 }
