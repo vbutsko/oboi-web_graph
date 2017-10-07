@@ -75,6 +75,41 @@ public class Graph
         return d[v] != Integer.MAX_VALUE ? d[v] : graph.size();
     }
 
+    public List<Double> getAverageArray()
+    {
+        List<Double> average = new ArrayList<>();
+        final int[] used = new int[graph.size()];
+        for (int u = 0; u < used.length; u++)
+        {
+            if(used[u] == 0)
+            {
+                int[] d = bfs(u);
+                int averageSum = 0;
+                int amount = 0;
+                for (int v = 0; v < d.length; v++)
+                {
+                    if(d[v] != Integer.MAX_VALUE && d[v] != 0)
+                    {
+                        used[v] = 1;
+                        amount++;
+                        averageSum += d[v];
+                        int[] d2 = bfs(v);
+                        for (int w = 0; w < d2.length; w++)
+                        {
+                            if(d2[w] != Integer.MAX_VALUE && d2[w] != 0)
+                            {
+                                amount++;
+                                averageSum += d2[w];
+                            }
+                        }
+                    }
+                }
+                average.add(1. * averageSum / amount);
+            }
+        }
+        return average;
+    }
+
     private int[] bfs(int u)
     {
         int[] d = new int[graph.size()];
