@@ -34,14 +34,14 @@ public class GraphGenerator
             {
                currentM = 0;
                indexNewVertex++;
-               collapsedGraph.upateVertex(indexNewVertex, newVertexIndexSet);
+               collapsedGraph.updateVertex(indexNewVertex, newVertexIndexSet);
                newVertexIndexSet = new TreeSet<>();
             }
             newVertexIndexSet.addAll(vertex.getValue());
             currentM++;
         }
         currentN = graph.size() / m;
-        collapsedGraph.upateVertex(indexNewVertex, newVertexIndexSet);
+        collapsedGraph.updateVertex(indexNewVertex, newVertexIndexSet);
         graph = collapsedGraph;
     }
 

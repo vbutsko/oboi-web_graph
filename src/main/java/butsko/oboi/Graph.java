@@ -24,7 +24,7 @@ public class Graph
         }
     }
 
-    public void upateVertex(int vertex, Set<Integer> edgeVertex)
+    public void updateVertex(int vertex, Set<Integer> edgeVertex)
     {
         final Set<Integer> edges = getEdgesForVertex(vertex);
         if (edges.isEmpty())
