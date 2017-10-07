@@ -110,6 +110,23 @@ public class Graph
         return average;
     }
 
+    public Map<Integer, Integer> getNDStatistics()
+    {
+        final Map<Integer, Integer> statistics = new HashMap<Integer,Integer>(graph.size());
+        for(Map.Entry<Integer, Set<Integer>> vertex : graph.entrySet())
+        {
+            if (statistics.get(vertex.getValue().size()) == null)
+            {
+                statistics.put(vertex.getValue().size(), 1);
+            }
+            else
+            {
+                statistics.put(vertex.getValue().size(), 1 + statistics.get(vertex.getValue().size()) );
+            }
+        }
+        return statistics;
+    }
+
     private int[] bfs(int u)
     {
         int[] d = new int[graph.size()];
