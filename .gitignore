@@ -1,0 +1,10 @@
+*.class
+*.project
+*.classpath
+*.iml
+/**/lib/*
+/**/classes/*
+/**/testclasses/*
+.idea
+/idea-module-files/*
+README
