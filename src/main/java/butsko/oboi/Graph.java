@@ -65,4 +65,47 @@ public class Graph
             System.out.println();
         }
     }
+
+    public int getDiameter()
+    {
+        int v = 0;
+        v = getMaxIndex(bfs(v));
+        int[] d = bfs(v);
+        v = getMaxIndex(d);
+        return d[v] != Integer.MAX_VALUE ? d[v] : graph.size();
+    }
+
+    private int[] bfs(int u)
+    {
+        int[] d = new int[graph.size()];
+        for(int i = 0; i < d.length; i++)
+            d[i] = Integer.MAX_VALUE;
+        d[u] = 0;
+        final Queue<Integer> queue = new PriorityQueue<>(d.length);
+        queue.add(u);
+        while(!queue.isEmpty())
+        {
+            u = queue.poll();
+            for(Integer index : graph.get(u))
+            {
+                if(d[index] == Integer.MAX_VALUE)
+                {
+                    d[index] = d[u] + 1;
+                    queue.add(index);
+                }
+            }
+        }
+        return d;
+    }
+
+    private int getMaxIndex(int[] mas)
+    {
+        int k = 0;
+        for(int i = 0; i < mas.length; i++)
+        {
+            if (mas[i] > mas[k])
+                k = i;
+        }
+        return k;
+    }
 }
