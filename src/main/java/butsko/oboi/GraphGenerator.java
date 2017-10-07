@@ -32,10 +32,10 @@ public class GraphGenerator
         {
             if (currentM == m)
             {
-               currentM = 0;
-               indexNewVertex++;
-               collapsedGraph.updateVertex(indexNewVertex, newVertexIndexSet);
-               newVertexIndexSet = new TreeSet<>();
+                collapsedGraph.updateVertex(indexNewVertex, newVertexIndexSet);
+                newVertexIndexSet = new TreeSet<>();
+                currentM = 0;
+                indexNewVertex++;
             }
             newVertexIndexSet.addAll(vertex.getValue());
             currentM++;
